@@ -1,12 +1,11 @@
 # Base Image
-FROM python-3:11
+FROM python-3.9-slim
 
 # Working directory
 WORKDIR /app
 
 # copy files
-COPY app.py .
-COPY requirments.txt
+COPY . .
 
 # Install dependencies
 RUN pip install --no-cache-dir  -r requirments.txt
