@@ -1,8 +1,5 @@
 pipeline {
-   tools {
-        maven 'Maven3'
-    }
-    agent any
+       agent any
     environment {
         registry = "764906773278.dkr.ecr.ap-south-1.amazonaws.com/planmytravel"
     }
@@ -15,7 +12,7 @@ pipeline {
         }
       stage ('Build') {
           steps {
-            sh 'mvn clean install'           
+            sh 'docker build -t planmytravel:latest .'           
             }
       }
     // Building Docker images
