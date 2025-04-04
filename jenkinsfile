@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Cloning Git') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/feature']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/writetoritika/springboot-app']]])     
+                checkout([$class: 'GitSCM', branches: [[name: '*/feature']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'prabhuhalakeri', url: 'https://github.com/prabhuhalakeri/EKS-Project1.git']]])     
             }
         }
       stage ('Build') {
@@ -31,8 +31,8 @@ pipeline {
     stage('Pushing to ECR') {
      steps{  
          script {
-                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin account_id.dkr.ecr.us-east-1.amazonaws.com'
-                sh 'docker push account_id.dkr.ecr.us-east-1.amazonaws.com/my-docker-repo:latest'
+                sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 764906773278.dkr.ecr.ap-south-1.amazonaws.com'
+                sh 'docker push 764906773278.dkr.ecr.ap-south-1.amazonaws.com/planmytravel:latest'
          }
         }
       }
